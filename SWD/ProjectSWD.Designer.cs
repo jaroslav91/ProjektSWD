@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this._chblRecognitions = new System.Windows.Forms.CheckedListBox();
+            this._btnAnalyze = new System.Windows.Forms.Button();
             this._btnSuggestTreatment = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this._decision = new System.Windows.Forms.CheckedListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this._lRecognitions = new System.Windows.Forms.Label();
+            this._chblDecision = new System.Windows.Forms.CheckedListBox();
+            this._lTreatmentGoal = new System.Windows.Forms.Label();
+            this._tbResult = new System.Windows.Forms.TextBox();
+            this._lResult = new System.Windows.Forms.Label();
+            this._btnClear = new System.Windows.Forms.Button();
+            this._chblSymptoms = new System.Windows.Forms.CheckedListBox();
+            this._lSymptoms = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // checkedListBox1
+            // _chblRecognitions
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this._chblRecognitions.FormattingEnabled = true;
+            this._chblRecognitions.Items.AddRange(new object[] {
             "Uczulenia na paracetamol",
             "Uczulenia na ibuprofen",
             "Niewydolność wątroby",
@@ -52,19 +52,19 @@
             "Uczulenie na diosmektyt",
             "Choroba wrzodowa żołądka",
             "Ciąża"});
-            this.checkedListBox1.Location = new System.Drawing.Point(205, 31);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(199, 259);
-            this.checkedListBox1.TabIndex = 0;
+            this._chblRecognitions.Location = new System.Drawing.Point(205, 31);
+            this._chblRecognitions.Name = "_chblRecognitions";
+            this._chblRecognitions.Size = new System.Drawing.Size(199, 259);
+            this._chblRecognitions.TabIndex = 0;
             // 
-            // button1
+            // _btnAnalyze
             // 
-            this.button1.Location = new System.Drawing.Point(285, 296);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Analizuj";
-            this.button1.UseVisualStyleBackColor = true;
+            this._btnAnalyze.Location = new System.Drawing.Point(285, 296);
+            this._btnAnalyze.Name = "_btnAnalyze";
+            this._btnAnalyze.Size = new System.Drawing.Size(119, 23);
+            this._btnAnalyze.TabIndex = 1;
+            this._btnAnalyze.Text = "Analizuj";
+            this._btnAnalyze.UseVisualStyleBackColor = true;
             // 
             // _btnSuggestTreatment
             // 
@@ -75,70 +75,70 @@
             this._btnSuggestTreatment.Text = "Zaproponuj leczenie";
             this._btnSuggestTreatment.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // _lRecognitions
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(251, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Rozpoznanie:";
+            this._lRecognitions.AutoSize = true;
+            this._lRecognitions.Location = new System.Drawing.Point(251, 15);
+            this._lRecognitions.Name = "_lRecognitions";
+            this._lRecognitions.Size = new System.Drawing.Size(72, 13);
+            this._lRecognitions.TabIndex = 4;
+            this._lRecognitions.Text = "Rozpoznanie:";
             // 
-            // _decision
+            // _chblDecision
             // 
-            this._decision.FormattingEnabled = true;
-            this._decision.Items.AddRange(new object[] {
+            this._chblDecision.FormattingEnabled = true;
+            this._chblDecision.Items.AddRange(new object[] {
             "Zmniejszenie temperatury",
             "Elimnacja bólu głowy",
             "Elimnacja bólu brzucha",
             "Elimnacja bólu zęba"});
-            this._decision.Location = new System.Drawing.Point(423, 31);
-            this._decision.Name = "_decision";
-            this._decision.Size = new System.Drawing.Size(218, 259);
-            this._decision.TabIndex = 6;
+            this._chblDecision.Location = new System.Drawing.Point(423, 31);
+            this._chblDecision.Name = "_chblDecision";
+            this._chblDecision.Size = new System.Drawing.Size(218, 259);
+            this._chblDecision.TabIndex = 6;
             // 
-            // label3
+            // _lTreatmentGoal
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(504, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Cel leczenia:";
+            this._lTreatmentGoal.AutoSize = true;
+            this._lTreatmentGoal.Location = new System.Drawing.Point(504, 15);
+            this._lTreatmentGoal.Name = "_lTreatmentGoal";
+            this._lTreatmentGoal.Size = new System.Drawing.Size(67, 13);
+            this._lTreatmentGoal.TabIndex = 8;
+            this._lTreatmentGoal.Text = "Cel leczenia:";
             // 
-            // textBox2
+            // _tbResult
             // 
-            this.textBox2.Location = new System.Drawing.Point(27, 351);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(614, 120);
-            this.textBox2.TabIndex = 9;
-            this.textBox2.Text = "Lek z ibuprofenem (Ibuprom, Gripex)\r\nUnikaj alkoholu, napojów gazowanych, soków i" +
+            this._tbResult.Location = new System.Drawing.Point(27, 351);
+            this._tbResult.Multiline = true;
+            this._tbResult.Name = "_tbResult";
+            this._tbResult.Size = new System.Drawing.Size(614, 120);
+            this._tbResult.TabIndex = 9;
+            this._tbResult.Text = "Lek z ibuprofenem (Ibuprom, Gripex)\r\nUnikaj alkoholu, napojów gazowanych, soków i" +
     " kawy\r\nPij dużo płynów";
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this._tbResult.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // label4
+            // _lResult
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 335);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Decyzja:";
+            this._lResult.AutoSize = true;
+            this._lResult.Location = new System.Drawing.Point(24, 335);
+            this._lResult.Name = "_lResult";
+            this._lResult.Size = new System.Drawing.Size(48, 13);
+            this._lResult.TabIndex = 10;
+            this._lResult.Text = "Decyzja:";
             // 
-            // button3
+            // _btnClear
             // 
-            this.button3.Location = new System.Drawing.Point(566, 477);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Wyczyść";
-            this.button3.UseVisualStyleBackColor = true;
+            this._btnClear.Location = new System.Drawing.Point(566, 477);
+            this._btnClear.Name = "_btnClear";
+            this._btnClear.Size = new System.Drawing.Size(75, 23);
+            this._btnClear.TabIndex = 11;
+            this._btnClear.Text = "Wyczyść";
+            this._btnClear.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox2
+            // _chblSymptoms
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Items.AddRange(new object[] {
+            this._chblSymptoms.FormattingEnabled = true;
+            this._chblSymptoms.Items.AddRange(new object[] {
             "Biegunka",
             "Ból brzucha",
             "Ból głowy",
@@ -147,36 +147,36 @@
             "Katar",
             "Ból mięśni",
             "Gorączka"});
-            this.checkedListBox2.Location = new System.Drawing.Point(13, 31);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(165, 259);
-            this.checkedListBox2.TabIndex = 12;
+            this._chblSymptoms.Location = new System.Drawing.Point(27, 31);
+            this._chblSymptoms.Name = "_chblSymptoms";
+            this._chblSymptoms.Size = new System.Drawing.Size(165, 259);
+            this._chblSymptoms.TabIndex = 12;
             // 
-            // label2
+            // _lSymptoms
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Obiawy:";
+            this._lSymptoms.AutoSize = true;
+            this._lSymptoms.Location = new System.Drawing.Point(76, 15);
+            this._lSymptoms.Name = "_lSymptoms";
+            this._lSymptoms.Size = new System.Drawing.Size(45, 13);
+            this._lSymptoms.TabIndex = 13;
+            this._lSymptoms.Text = "Obiawy:";
             // 
             // ProjectSWD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 513);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkedListBox2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this._decision);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this._lSymptoms);
+            this.Controls.Add(this._chblSymptoms);
+            this.Controls.Add(this._btnClear);
+            this.Controls.Add(this._lResult);
+            this.Controls.Add(this._tbResult);
+            this.Controls.Add(this._lTreatmentGoal);
+            this.Controls.Add(this._chblDecision);
+            this.Controls.Add(this._lRecognitions);
             this.Controls.Add(this._btnSuggestTreatment);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this._btnAnalyze);
+            this.Controls.Add(this._chblRecognitions);
             this.Name = "ProjectSWD";
             this.Text = "Projekt SWD";
             this.ResumeLayout(false);
@@ -186,17 +186,17 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckedListBox _chblRecognitions;
+        private System.Windows.Forms.Button _btnAnalyze;
         private System.Windows.Forms.Button _btnSuggestTreatment;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckedListBox _decision;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label _lRecognitions;
+        private System.Windows.Forms.CheckedListBox _chblDecision;
+        private System.Windows.Forms.Label _lTreatmentGoal;
+        private System.Windows.Forms.TextBox _tbResult;
+        private System.Windows.Forms.Label _lResult;
+        private System.Windows.Forms.Button _btnClear;
+        private System.Windows.Forms.CheckedListBox _chblSymptoms;
+        private System.Windows.Forms.Label _lSymptoms;
     }
 }
 
