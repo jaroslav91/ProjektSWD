@@ -11,12 +11,11 @@ namespace ConsoleTest1
     {
         static void Main(string[] args)
         {
-            var path = @"C:\Program Files (x86)\swipl\boot32.prc";
-            var pathToFile = @"C:\temp\cycki.pl";
+            var path = @"C:\Program Files (x86)\swipl";
             Environment.SetEnvironmentVariable("SWI_HOME_DIR", path);  // or boot64.prc
             if (!PlEngine.IsInitialized)
             {
-                String[] param = { "-q", "-f", pathToFile }; // suppressing informational and banner messages
+                String[] param = { "-q" }; // suppressing informational and banner messages
                 PlEngine.Initialize(param);
                 
                 PlQuery.PlCall("assert(father(martin, inka))");
