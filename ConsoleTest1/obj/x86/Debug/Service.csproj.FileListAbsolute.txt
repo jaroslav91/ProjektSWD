@@ -1,0 +1,3 @@
+C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\bin\x86\Debug\ConsoleTest1.exe.config
+C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\obj\x86\Debug\ConsoleTest1.exe
+C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\obj\x86\Debug\ConsoleTest1.pdb
