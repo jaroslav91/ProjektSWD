@@ -34,7 +34,7 @@
   <ItemGroup>
     <Reference Include="SwiPlCs, Version=1.1.60605.0, Culture=neutral, PublicKeyToken=03ea137181587c56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\ProjektSWD\ConsoleTest1\bin\Debug\SwiPlCs.dll</HintPath>
+      <HintPath>..\PrologService\lib\SwiPlCs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

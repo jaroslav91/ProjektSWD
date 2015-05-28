@@ -72,7 +72,7 @@
   <ItemGroup>
     <Reference Include="SwiPlCs, Version=1.1.60605.0, Culture=neutral, PublicKeyToken=03ea137181587c56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\SwiPlCs.dll</HintPath>
+      <HintPath>lib\SwiPlCs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -108,8 +108,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\SwiPlCs.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="lib\SwiPlCs.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

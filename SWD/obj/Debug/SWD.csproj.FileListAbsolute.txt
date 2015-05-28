@@ -7,16 +7,3 @@ C:\Users\Jaroslaw Kulis\documents\visual studio 2013\Projects\GonsiórHodowany\S
 C:\Users\Jaroslaw Kulis\documents\visual studio 2013\Projects\GonsiórHodowany\SWD\obj\Debug\SWD.exe
 C:\Users\Jaroslaw Kulis\documents\visual studio 2013\Projects\GonsiórHodowany\SWD\obj\Debug\SWD.pdb
 C:\Users\Jaroslaw Kulis\documents\visual studio 2013\Projects\GonsiórHodowany\SWD\obj\Debug\SWD.ProjectSWD.resources
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\SWD.exe.config
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\Library\SwiPlCs.dll
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\SWD.exe
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\SWD.pdb
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\SwiPlCs.dll
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\PrologService.pdb
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\bin\Debug\SwiPlCs.xml
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.csprojResolveAssemblyReference.cache
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.ProjectSWD.resources
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.Properties.Resources.resources
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.csproj.GenerateResource.Cache
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.exe
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\SWD\obj\Debug\SWD.pdb
