@@ -21,6 +21,8 @@ namespace SWD
         public List<ListItem> RecognitionsList { get; set; }
         public List<ListItem> TreatmentGoalsToShow { get; set; }
 
+        public Dictionary<string, string> ResultDictionary { get; set; } 
+
         private IPrologService _prologService;
 
         public IPrologService PrologService
@@ -55,9 +57,9 @@ namespace SWD
 
             }
 
-            if (TreatmentGoalsList != null)
+            if (TreatmentGoalsToShow != null)
             {
-                _bsTreatmentGoals.DataSource = TreatmentGoalsList;
+                _bsTreatmentGoals.DataSource = TreatmentGoalsToShow;
                 _chblTreatmentGoals.DataSource = _bsTreatmentGoals;
                 _chblTreatmentGoals.DisplayMember = "Text";
                 _chblTreatmentGoals.ValueMember = "IsSelected";
@@ -82,17 +84,35 @@ namespace SWD
                 new ListItem() {Text = "Uczulenie na Loperamid", InternalName = "uczulenie_na_loperamid"},
                 new ListItem() {Text = "Uczulenie na Paracetamol", InternalName = "uczulenie_na_paracetamol"},
             };
-            TreatmentGoalsList = new List<ListItem>();
+            TreatmentGoalsList = new List<ListItem>()
+            {
+                new ListItem() {Text = "Zastopuj Biegunkę", InternalName = "biegunka"},
+                new ListItem() {Text = "Zmniejsz gorączkę", InternalName = "goraczka"},
+                new ListItem() {Text = "Wylecz ból głowy", InternalName = "bol_glowy"},
+                new ListItem() {Text = "Wylecz bóle mięśni", InternalName = "bole_miesni"}
+            };
+
+            ResultDictionary = new Dictionary<string, string>();
+            
             TreatmentGoalsToShow = new List<ListItem>();
         }
 
         private void _btnSuggestTreatment_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("dupa");
+            PrologService.AddPrologQuery("clear_stored_goals");
+            var selectedTreatmentGoals = _chblTreatmentGoals.CheckedItems;
+            foreach (ListItem items in selectedTreatmentGoals)
+            {
+                var query = "assert(cel_leczenia(" + items.InternalName + "))";
+                PrologService.AddPrologQuery(query);
+            }
+
+            GetAndShowDecision();
         }
 
         private void _btnAnalyze_Click(object sender, EventArgs e)
         {
+            ClearBeforeAnalze();
             var selectedSymptoms = _chblSymptoms.CheckedItems;
             foreach (ListItem items in selectedSymptoms)
             {
@@ -107,23 +127,54 @@ namespace SWD
                 PrologService.AddPrologQuery(query);
             }
 
-            GetandShowDecision();
+            GetTreatmentGoals();
+            
         }
 
-        private void GetandShowDecision()
+        private void GetAndShowDecision()
         {
-            var finalQuery = "co_wziac(L)";
+            var finalQuery = "co_przepisac(L)";
             var solution = PrologService.GetPologSolutionVariableses(finalQuery);
             try
             {
-                var result = solution.Select(v => v["L"].ToString()).ToList();
-                
                 var resultText = new StringBuilder();
-                foreach (var line in result)
+                
+                var result = solution.Select(v => v["L"].ToListString()).ToList().FirstOrDefault();
+                if (result != null)
                 {
-                    resultText.AppendLine(line);
+                    var set = new SortedSet<string>(){};
+                    result.ToList().ForEach(c=> set.Add(c));
+                    foreach (var line in set)
+                    {
+                        resultText.AppendLine(line);
+                    }
                 }
                 _tbResult.Text = resultText.ToString();
+            }
+            catch (PlException)
+            {
+                _tbResult.Text = String.Empty;
+            }
+        }
+
+        private void GetTreatmentGoals()
+        {
+            var finalQuery = "co_leczyc(G)";
+            var solution = PrologService.GetPologSolutionVariableses(finalQuery);
+            try
+            {
+                var result = solution.Select(v => v["G"].ToListString()).ToList().FirstOrDefault();
+                if(result != null)
+                foreach (var goal in result)
+                {
+                    var goalItem = TreatmentGoalsList.FirstOrDefault(g => g.InternalName.Equals(goal));
+                    if (goalItem != null)
+                    {
+                        TreatmentGoalsToShow.Add(goalItem);
+                    }
+
+                }
+                _bsTreatmentGoals.ResetBindings(false);
             }
             catch (PlException)
             {
@@ -149,10 +200,23 @@ namespace SWD
             }
             _chblRecognitions.ClearSelected();
             
-            TreatmentGoalsList = new List<ListItem>();
-            _bsTreatmentGoals.DataSource = TreatmentGoalsList;
+            TreatmentGoalsToShow = new List<ListItem>();
+            _bsTreatmentGoals.DataSource = TreatmentGoalsToShow;
 
             
+
+        }
+
+        private void ClearBeforeAnalze()
+        {
+            PrologService.AddPrologQuery("clear_stored_symptons");
+            PrologService.AddPrologQuery("clear_stored_goals");
+            _prologService = null;
+            _tbResult.Text = String.Empty;
+
+            TreatmentGoalsToShow = new List<ListItem>();
+            _bsTreatmentGoals.DataSource = TreatmentGoalsToShow;
+            _bsTreatmentGoals.ResetBindings(false);
 
         }
 

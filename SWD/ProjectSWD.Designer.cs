@@ -122,9 +122,6 @@
             this._tbResult.Name = "_tbResult";
             this._tbResult.Size = new System.Drawing.Size(614, 120);
             this._tbResult.TabIndex = 9;
-            this._tbResult.Text = "Lek z ibuprofenem (Ibuprom, Gripex)\r\nUnikaj alkoholu, napojów gazowanych, soków i" +
-    " kawy\r\nPij dużo płynów";
-           
             // 
             // _lResult
             // 

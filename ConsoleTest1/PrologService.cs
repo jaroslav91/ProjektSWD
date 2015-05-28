@@ -100,5 +100,25 @@ namespace ConsoleTest1
             }
             
         }
+
+        public IEnumerable<PlTermV> GetPologSolution(string query)
+        {
+            if (!InitializePrologEngine())
+                return new List<PlTermV>();
+            try
+            {
+                using (PlQuery q = new PlQuery(query))
+                {
+                    return q.Solutions;
+                }
+            }
+            catch (PlException ex)
+            {
+                Console.WriteLine(ex.MessagePl);
+                Console.WriteLine(ex.Message);
+                return new List<PlTermV>();
+            }
+
+        }
     }
 }

@@ -15,6 +15,7 @@ namespace ConsoleTest1
         void AddPrologQuery(string query);
 
         IEnumerable<PlQueryVariables> GetPologSolutionVariableses(string query);
+        IEnumerable<PlTermV> GetPologSolution(string query);
         
         void CleanPrologEngine();
     }
