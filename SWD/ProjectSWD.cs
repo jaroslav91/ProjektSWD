@@ -7,19 +7,160 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ConsoleTest1;
+using SbsSW.SwiPlCs;
+using SbsSW.SwiPlCs.Exceptions;
+using SWD.Common;
 
 namespace SWD
 {
     public partial class ProjectSWD : Form
     {
+        public List<ListItem> SympthonsList { get; set; }
+        public List<ListItem> TreatmentGoalsList { get; set; }
+        public List<ListItem> RecognitionsList { get; set; }
+        public List<ListItem> TreatmentGoalsToShow { get; set; }
+
+        private IPrologService _prologService;
+
+        public IPrologService PrologService
+        {
+            get { return _prologService ?? (_prologService = new PrologService()); }
+        }
+
         public ProjectSWD()
         {
             InitializeComponent();
+            LoadDataStaticDb();
+            LoadBindingSources();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void LoadBindingSources()
         {
+            if (SympthonsList != null)
+            {
+                _bsSympthons.DataSource = SympthonsList;
+                _chblSymptoms.DataSource = _bsSympthons;
+                _chblSymptoms.DisplayMember = "Text";
+                _chblSymptoms.ValueMember = "IsSelected";
+
+            }
+
+            if (RecognitionsList != null)
+            {
+                _bsRecognitions.DataSource = RecognitionsList;
+                _chblRecognitions.DataSource = _bsRecognitions;
+                _chblRecognitions.DisplayMember = "Text";
+                _chblRecognitions.ValueMember = "IsSelected";
+
+            }
+
+            if (TreatmentGoalsList != null)
+            {
+                _bsTreatmentGoals.DataSource = TreatmentGoalsList;
+                _chblTreatmentGoals.DataSource = _bsTreatmentGoals;
+                _chblTreatmentGoals.DisplayMember = "Text";
+                _chblTreatmentGoals.ValueMember = "IsSelected";
+
+            }
 
         }
+
+        private void LoadDataStaticDb()
+        {
+            SympthonsList = new List<ListItem>()
+            {
+                new ListItem() {Text = "Ból głowy", InternalName = "bol_glowy"},
+                new ListItem() {Text = "Ból zęba", InternalName = "bol_zeba"},
+                new ListItem() {Text = "Gorączka", InternalName = "goraczka"},
+                new ListItem() {Text = "Bóle mięśni", InternalName = "bole_miesni"},
+                new ListItem() {Text = "Biegunka", InternalName = "biegunka"}
+            };
+
+            RecognitionsList = new List<ListItem>()
+            {
+                new ListItem() {Text = "Uczulenie na Loperamid", InternalName = "uczulenie_na_loperamid"},
+                new ListItem() {Text = "Uczulenie na Paracetamol", InternalName = "uczulenie_na_paracetamol"},
+            };
+            TreatmentGoalsList = new List<ListItem>();
+            TreatmentGoalsToShow = new List<ListItem>();
+        }
+
+        private void _btnSuggestTreatment_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("dupa");
+        }
+
+        private void _btnAnalyze_Click(object sender, EventArgs e)
+        {
+            var selectedSymptoms = _chblSymptoms.CheckedItems;
+            foreach (ListItem items in selectedSymptoms)
+            {
+                var query = "assert(ma(" + items.InternalName + "))";
+                PrologService.AddPrologQuery(query);
+            }
+
+            var selectedRecognitions = _chblRecognitions.CheckedItems;
+            foreach (ListItem items in selectedRecognitions)
+            {
+                var query = "assert(ma(" + items.InternalName + "))";
+                PrologService.AddPrologQuery(query);
+            }
+
+            GetandShowDecision();
+        }
+
+        private void GetandShowDecision()
+        {
+            var finalQuery = "co_wziac(L)";
+            var solution = PrologService.GetPologSolutionVariableses(finalQuery);
+            try
+            {
+                var result = solution.Select(v => v["L"].ToString()).ToList();
+                
+                var resultText = new StringBuilder();
+                foreach (var line in result)
+                {
+                    resultText.AppendLine(line);
+                }
+                _tbResult.Text = resultText.ToString();
+            }
+            catch (PlException)
+            {
+                _tbResult.Text = String.Empty;
+            }
+        }
+
+        private void _btnClear_Click(object sender, EventArgs e)
+        {
+            PrologService.CleanPrologEngine();
+            _prologService = null;
+            _tbResult.Text = String.Empty;
+            
+            foreach (int i in _chblSymptoms.CheckedIndices)
+            {
+                _chblSymptoms.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            _chblSymptoms.ClearSelected();
+
+            foreach (int i in _chblRecognitions.CheckedIndices)
+            {
+                _chblRecognitions.SetItemCheckState(i, CheckState.Unchecked);
+            }
+            _chblRecognitions.ClearSelected();
+            
+            TreatmentGoalsList = new List<ListItem>();
+            _bsTreatmentGoals.DataSource = TreatmentGoalsList;
+
+            
+
+        }
+
+        public string MapPrologDecisionToUserFriendly(string result)
+        {
+            //todo Mapowanie rezultatów
+            return String.Empty;
+        }
+
     }
 }

@@ -28,17 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this._chblRecognitions = new System.Windows.Forms.CheckedListBox();
             this._btnAnalyze = new System.Windows.Forms.Button();
             this._btnSuggestTreatment = new System.Windows.Forms.Button();
             this._lRecognitions = new System.Windows.Forms.Label();
-            this._chblDecision = new System.Windows.Forms.CheckedListBox();
+            this._chblTreatmentGoals = new System.Windows.Forms.CheckedListBox();
             this._lTreatmentGoal = new System.Windows.Forms.Label();
             this._tbResult = new System.Windows.Forms.TextBox();
             this._lResult = new System.Windows.Forms.Label();
             this._btnClear = new System.Windows.Forms.Button();
             this._chblSymptoms = new System.Windows.Forms.CheckedListBox();
             this._lSymptoms = new System.Windows.Forms.Label();
+            this._bsSympthons = new System.Windows.Forms.BindingSource(this.components);
+            this._bsRecognitions = new System.Windows.Forms.BindingSource(this.components);
+            this._bsTreatmentGoals = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this._bsSympthons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._bsRecognitions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._bsTreatmentGoals)).BeginInit();
             this.SuspendLayout();
             // 
             // _chblRecognitions
@@ -65,6 +72,7 @@
             this._btnAnalyze.TabIndex = 1;
             this._btnAnalyze.Text = "Analizuj";
             this._btnAnalyze.UseVisualStyleBackColor = true;
+            this._btnAnalyze.Click += new System.EventHandler(this._btnAnalyze_Click);
             // 
             // _btnSuggestTreatment
             // 
@@ -74,6 +82,7 @@
             this._btnSuggestTreatment.TabIndex = 3;
             this._btnSuggestTreatment.Text = "Zaproponuj leczenie";
             this._btnSuggestTreatment.UseVisualStyleBackColor = true;
+            this._btnSuggestTreatment.Click += new System.EventHandler(this._btnSuggestTreatment_Click);
             // 
             // _lRecognitions
             // 
@@ -84,18 +93,18 @@
             this._lRecognitions.TabIndex = 4;
             this._lRecognitions.Text = "Rozpoznanie:";
             // 
-            // _chblDecision
+            // _chblTreatmentGoals
             // 
-            this._chblDecision.FormattingEnabled = true;
-            this._chblDecision.Items.AddRange(new object[] {
+            this._chblTreatmentGoals.FormattingEnabled = true;
+            this._chblTreatmentGoals.Items.AddRange(new object[] {
             "Zmniejszenie temperatury",
             "Elimnacja bólu głowy",
             "Elimnacja bólu brzucha",
             "Elimnacja bólu zęba"});
-            this._chblDecision.Location = new System.Drawing.Point(423, 31);
-            this._chblDecision.Name = "_chblDecision";
-            this._chblDecision.Size = new System.Drawing.Size(218, 259);
-            this._chblDecision.TabIndex = 6;
+            this._chblTreatmentGoals.Location = new System.Drawing.Point(423, 31);
+            this._chblTreatmentGoals.Name = "_chblTreatmentGoals";
+            this._chblTreatmentGoals.Size = new System.Drawing.Size(218, 259);
+            this._chblTreatmentGoals.TabIndex = 6;
             // 
             // _lTreatmentGoal
             // 
@@ -115,7 +124,7 @@
             this._tbResult.TabIndex = 9;
             this._tbResult.Text = "Lek z ibuprofenem (Ibuprom, Gripex)\r\nUnikaj alkoholu, napojów gazowanych, soków i" +
     " kawy\r\nPij dużo płynów";
-            this._tbResult.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+           
             // 
             // _lResult
             // 
@@ -134,19 +143,11 @@
             this._btnClear.TabIndex = 11;
             this._btnClear.Text = "Wyczyść";
             this._btnClear.UseVisualStyleBackColor = true;
+            this._btnClear.Click += new System.EventHandler(this._btnClear_Click);
             // 
             // _chblSymptoms
             // 
             this._chblSymptoms.FormattingEnabled = true;
-            this._chblSymptoms.Items.AddRange(new object[] {
-            "Biegunka",
-            "Ból brzucha",
-            "Ból głowy",
-            "Ból zęba",
-            "Kaszel",
-            "Katar",
-            "Ból mięśni",
-            "Gorączka"});
             this._chblSymptoms.Location = new System.Drawing.Point(27, 31);
             this._chblSymptoms.Name = "_chblSymptoms";
             this._chblSymptoms.Size = new System.Drawing.Size(165, 259);
@@ -161,6 +162,18 @@
             this._lSymptoms.TabIndex = 13;
             this._lSymptoms.Text = "Obiawy:";
             // 
+            // _bsSympthons
+            // 
+            this._bsSympthons.DataSource = typeof(SWD.Common.ListItem);
+            // 
+            // _bsRecognitions
+            // 
+            this._bsRecognitions.DataSource = typeof(SWD.Common.ListItem);
+            // 
+            // _bsTreatmentGoals
+            // 
+            this._bsTreatmentGoals.DataSource = typeof(SWD.Common.ListItem);
+            // 
             // ProjectSWD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,13 +185,16 @@
             this.Controls.Add(this._lResult);
             this.Controls.Add(this._tbResult);
             this.Controls.Add(this._lTreatmentGoal);
-            this.Controls.Add(this._chblDecision);
+            this.Controls.Add(this._chblTreatmentGoals);
             this.Controls.Add(this._lRecognitions);
             this.Controls.Add(this._btnSuggestTreatment);
             this.Controls.Add(this._btnAnalyze);
             this.Controls.Add(this._chblRecognitions);
             this.Name = "ProjectSWD";
             this.Text = "Projekt SWD";
+            ((System.ComponentModel.ISupportInitialize)(this._bsSympthons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._bsRecognitions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._bsTreatmentGoals)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,13 +206,16 @@
         private System.Windows.Forms.Button _btnAnalyze;
         private System.Windows.Forms.Button _btnSuggestTreatment;
         private System.Windows.Forms.Label _lRecognitions;
-        private System.Windows.Forms.CheckedListBox _chblDecision;
+        private System.Windows.Forms.CheckedListBox _chblTreatmentGoals;
         private System.Windows.Forms.Label _lTreatmentGoal;
         private System.Windows.Forms.TextBox _tbResult;
         private System.Windows.Forms.Label _lResult;
         private System.Windows.Forms.Button _btnClear;
         private System.Windows.Forms.CheckedListBox _chblSymptoms;
         private System.Windows.Forms.Label _lSymptoms;
+        private System.Windows.Forms.BindingSource _bsSympthons;
+        private System.Windows.Forms.BindingSource _bsRecognitions;
+        private System.Windows.Forms.BindingSource _bsTreatmentGoals;
     }
 }
 
