@@ -1,0 +1,53 @@
+:- dynamic(ma/1).
+:- dynamic(cel_leczenia/1).
+
+clear_stored_symptons :- retractall(ma(_)),fail.
+
+clear_stored_goals :- retractall(cel_leczenia(_)),fail.
+
+
+
+%wyznacza dostepne cele leczenia
+moze_leczyc(bol_glowy) :- ma(bol_glowy).
+moze_leczyc(bol_zeba) :- ma(bol_zeba).
+moze_leczyc(goraczka) :- ma(goraczka).
+moze_leczyc(bole_miesni) :- ma(bole_miesni).
+moze_leczyc(biegunka) :- ma(biegunka).
+
+zastosowanie(X, Y) :- przepisz(X),cel_leczenia(Y).
+
+leczy(lek_z_paracetamolem, bol_glowy).
+leczy(lek_z_paracetamolem, bol_zeba).
+leczy(lek_z_paracetamolem, goraczka).
+leczy(lek_z_paracetamolem, bole_miesni).
+leczy(lek_z_loperamidem, bol_glowy).
+leczy(lek_z_loperamidem, bol_zeba).
+leczy(lek_z_loperamidem, goraczka).
+leczy(lek_z_loperamidem, bole_miesni).
+leczy(duzo_plynow, biegunka).
+
+%cel leczenia bedzie dostepny do wyboru na podstawie wartosci moze_leczyc()
+%cel_leczenia(biegunka).
+
+moze_przepisac(lek_z_paracetamolem) :-  
+(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni)), 
+not(ma(uczulenie_na_paracetamol)).
+
+moze_przepisac(lek_z_loperamidem) :- 
+(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni)), 
+not(ma(uczulenie_na_loperamid)).
+
+moze_przepisac(duzo_plynow) :- 
+cel_leczenia(biegunka).	
+
+sublist( [], _ ).
+sublist( [X|XS], [X|XSS] ) :- sublist( XS, XSS ).
+sublist( [X|XS], [_|XSS] ) :- sublist( [X|XS], XSS ).	
+
+co_leczyc(G) :- setof(X, moze_leczyc(X), G).
+
+cele(L) :- setof(X, cel_leczenia(X), L).
+
+co_leczy(X, L) :- setof(Y, leczy(X,Y), L).
+
+co_przepisac(L) :- setof(X, (moze_przepisac(X), cele(L2), co_leczy(X, L3), sublist(L2, L3)), L).
