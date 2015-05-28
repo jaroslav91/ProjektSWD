@@ -1,10 +1,10 @@
 C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\bin\x86\Debug\ConsoleTest1.exe.config
 C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\obj\x86\Debug\ConsoleTest1.exe
 C:\Users\Jarosław Kuliś\Documents\Visual Studio 2013\Projects\Projekt\ConsoleTest1\obj\x86\Debug\ConsoleTest1.pdb
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\ConsoleTest1.exe.config
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\obj\x86\Debug\ConsoleTest1.exe
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\obj\x86\Debug\ConsoleTest1.pdb
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\ConsoleTest1.exe
-C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\ConsoleTest1.pdb
 C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\SwiPlCs.xml
 C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\obj\x86\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\PrologService.dll.config
+C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\PrologService.dll
+C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\bin\x86\Debug\PrologService.pdb
+C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\obj\x86\Debug\PrologService.dll
+C:\Users\Jarosław Kuliś\Documents\GitHub\ProjektSWD\ConsoleTest1\obj\x86\Debug\PrologService.pdb

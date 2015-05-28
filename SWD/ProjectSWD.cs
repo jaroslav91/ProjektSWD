@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ConsoleTest1;
+using PrologService;
 using SbsSW.SwiPlCs;
 using SbsSW.SwiPlCs.Exceptions;
 using SWD.Common;
@@ -27,7 +27,7 @@ namespace SWD
 
         public IPrologService PrologService
         {
-            get { return _prologService ?? (_prologService = new PrologService()); }
+            get { return _prologService ?? (_prologService = new PrologService.PrologService()); }
         }
 
         public ProjectSWD()

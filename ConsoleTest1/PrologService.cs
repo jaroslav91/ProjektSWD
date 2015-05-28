@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SbsSW.SwiPlCs;
 using SbsSW.SwiPlCs.Exceptions;
 
-namespace ConsoleTest1
+namespace PrologService
 {
     public class PrologService : IPrologService
     {
@@ -66,6 +63,8 @@ namespace ConsoleTest1
         public void BuildPrologFile()
         {
             // Build a prolog source file 
+
+            //ToDo add create file if not exists
             if (!File.Exists(filename))
             {
             StreamWriter sw = File.CreateText(filename);
