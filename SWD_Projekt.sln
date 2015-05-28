@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "ConsoleTest1\Service.csproj", "{7D0AC97E-3066-4DAF-A016-C13256115CCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "PrologService\Service.csproj", "{7D0AC97E-3066-4DAF-A016-C13256115CCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWD", "SWD\SWD.csproj", "{608D0D76-2E86-409A-9F71-D3B614FC3B4C}"
 EndProject

@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SwiPlCs">
+    <Reference Include="SwiPlCs, Version=1.1.60605.0, Culture=neutral, PublicKeyToken=03ea137181587c56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\ProjektSWD\ConsoleTest1\bin\Debug\SwiPlCs.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -83,7 +84,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleTest1\Service.csproj">
+    <ProjectReference Include="..\PrologService\Service.csproj">
       <Project>{7d0ac97e-3066-4daf-a016-c13256115ccc}</Project>
       <Name>Service</Name>
     </ProjectReference>
