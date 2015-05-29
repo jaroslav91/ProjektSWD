@@ -13,6 +13,10 @@ moze_leczyc(bol_zeba) :- ma(bol_zeba).
 moze_leczyc(goraczka) :- ma(goraczka).
 moze_leczyc(bole_miesni) :- ma(bole_miesni).
 moze_leczyc(biegunka) :- ma(biegunka).
+moze_leczyc(kaszel) :- ma(kaszel).
+moze_leczyc(katar) :- ma(katar).
+moze_leczyc(nerwobole) :- ma(nerwobole).
+%moze_leczyc(bole) : - ma(bol_glowy,bol_zeba).
 
 zastosowanie(X, Y) :- przepisz(X),cel_leczenia(Y).
 
@@ -20,25 +24,77 @@ leczy(lek_z_paracetamolem, bol_glowy).
 leczy(lek_z_paracetamolem, bol_zeba).
 leczy(lek_z_paracetamolem, goraczka).
 leczy(lek_z_paracetamolem, bole_miesni).
+leczy(lek_z_paracetamolem, nerwobole).
+
 leczy(lek_z_loperamidem, bol_glowy).
 leczy(lek_z_loperamidem, bol_zeba).
 leczy(lek_z_loperamidem, goraczka).
 leczy(lek_z_loperamidem, bole_miesni).
+
+leczy(lek_z_ibuprofen, bol_glowy).
+leczy(lek_z_ibuprofen, bol_zeba).
+leczy(lek_z_ibuprofen, goraczka).
+leczy(lek_z_ibuprofen, bole_miesni).
+leczy(lek_z_ibuprofen, nerwobole).
+
+leczy(lek_z_aspiryna, bol_glowy).
+leczy(lek_z_aspiryna, bol_zeba).
+leczy(lek_z_aspiryna, goraczka).
+
+leczy(lek_z_naproksenem, bol_glowy).
+leczy(lek_z_naproksenem, nerwobole).
+leczy(lek_z_naproksenem, bole_miesni)
+leczy(lek_z_naproksenem, bole).
+
+leczy(lek_z_diosmatykiem, biegunka).
+
+leczy(lek_elofen, kaszel).
+leczy(lek_gardlox, kaszel).
+leczy(lek_acatar, katar ).
+leczy(lek_apselan, katar).
+
+
 leczy(duzo_plynow, biegunka).
 
 %cel leczenia bedzie dostepny do wyboru na podstawie wartosci moze_leczyc()
 %cel_leczenia(biegunka).
 
 moze_przepisac(lek_z_paracetamolem) :-  
-(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni)), 
+(cel_leczenia(bole);cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni);cel_leczenia(nerwobole)), 
 not(ma(uczulenie_na_paracetamol)).
 
 moze_przepisac(lek_z_loperamidem) :- 
-(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni)), 
+(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni);cel_leczenia(nerwobole)), 
 not(ma(uczulenie_na_loperamid)).
 
+moze_przepisac(lek_z_ibuprofen) :- 
+(cel_leczenia(bol_glowy);cel_leczenia(bol_zeba);cel_leczenia(goraczka);cel_leczenia(bole_miesni)), 
+not(ma(uczulenie_na_ibuprofen); not(ma(niewydolnosc_watroby))).
+
+moze_przepisac(lek_z_naproksenem) :-
+cel_leczenia(nerwobole),(ma(uczulenie_na_loperamid);ma(uczulenie_na_paracetamol)).
+
+moze_przepisac(lek_z_naproksenem) :-
+cel_leczenia(bole).
+
 moze_przepisac(duzo_plynow) :- 
-cel_leczenia(biegunka).	
+cel_leczenia(biegunka).
+
+
+moze_przepisac(lek_z_diosmatykiem) :- 
+cel_leczenia(biegunka),not(ma(cukrzyca)).	
+
+moze_przepisac(lek_acatar) :-
+cel_leczenia(katar),not(ma(astma)).
+
+moze_przepisac(lek_apselan) :-
+cel_leczenia(katar),ma(astma).
+
+moze_przepisac(lek_gardlox) :-
+cel_leczenia(kaszel),not(ma(cukrzyca)).
+
+moze_przepisac(lek_elofen) :-
+cel_leczenia(kaszel),ma(cukrzyca).
 
 sublist( [], _ ).
 sublist( [X|XS], [X|XSS] ) :- sublist( XS, XSS ).

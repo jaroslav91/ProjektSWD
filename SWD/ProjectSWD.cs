@@ -38,7 +38,7 @@ namespace SWD
             LoadBindingSources();
         }
         #endregion
-        
+
         #region Events
         private void _btnSuggestTreatment_Click(object sender, EventArgs e)
         {
@@ -98,7 +98,7 @@ namespace SWD
         #endregion
 
         #region Private Methods
-       
+
         private void LoadBindingSources()
         {
             if (SympthonsList != null)
@@ -129,7 +129,7 @@ namespace SWD
             }
 
         }
-        
+
         private void GetAndShowDecision()
         {
             var finalQuery = "co_przepisac(L)";
@@ -143,7 +143,7 @@ namespace SWD
                 {
                     var set = new SortedSet<string>() { };
                     result.ToList().ForEach(c => set.Add(MapPrologDecisionToUserFriendly(c)));
-                    
+
 
                     foreach (var line in set)
                     {
@@ -157,7 +157,7 @@ namespace SWD
                 _tbResult.Text = String.Empty;
             }
         }
-        
+
         private void GetTreatmentGoals()
         {
             var finalQuery = "co_leczyc(G)";
@@ -216,21 +216,41 @@ namespace SWD
                 new ListItem() {Text = "Ból zęba", InternalName = "bol_zeba"},
                 new ListItem() {Text = "Gorączka", InternalName = "goraczka"},
                 new ListItem() {Text = "Bóle mięśni", InternalName = "bole_miesni"},
-                new ListItem() {Text = "Biegunka", InternalName = "biegunka"}
+                new ListItem() {Text = "Biegunka", InternalName = "biegunka"},
+                new ListItem() {Text = "Kaszel", InternalName = "kaszel"},
+                new ListItem() {Text = "Nerwobóle", InternalName = "nerwobole"},
+                new ListItem() {Text = "Katar", InternalName = "katar"},
+                
+
             };
+            SympthonsList = SympthonsList.OrderBy(i => i.Text).ToList();
 
             RecognitionsList = new List<ListItem>()
             {
                 new ListItem() {Text = "Uczulenie na Loperamid", InternalName = "uczulenie_na_loperamid"},
                 new ListItem() {Text = "Uczulenie na Paracetamol", InternalName = "uczulenie_na_paracetamol"},
+                new ListItem() {Text = "Uczulenie na Ibuprofen", InternalName = "uczulenie_na_ibuprofen"},
+                new ListItem() {Text = "Niewydolność wątroby", InternalName = "niewydolnosc_watroby"},
+                new ListItem() {Text = "Uczulenie na diosmektyt", InternalName = "uczulenie_na_diosmetyk"},
+                new ListItem() {Text = "Cukrzyca", InternalName = "cukrzyca"},
+                new ListItem() {Text = "Astma", InternalName = "astma"},
+                                
             };
+            RecognitionsList = RecognitionsList.OrderBy(i => i.Text).ToList();
             TreatmentGoalsList = new List<ListItem>()
             {
                 new ListItem() {Text = "Zastopuj Biegunkę", InternalName = "biegunka"},
                 new ListItem() {Text = "Zmniejsz gorączkę", InternalName = "goraczka"},
                 new ListItem() {Text = "Wylecz ból głowy", InternalName = "bol_glowy"},
-                new ListItem() {Text = "Wylecz bóle mięśni", InternalName = "bole_miesni"}
+                new ListItem() {Text = "Wylecz bóle mięśni", InternalName = "bole_miesni"},
+                new ListItem() {Text = "Wylecz ból zęba", InternalName = "bol_zeba"},
+                new ListItem() {Text = "Wylecz katar", InternalName = "katar"},
+                new ListItem() {Text = "Wylecz kaszel", InternalName = "kaszel"},
+                new ListItem() {Text = "Wylecz nerwobóle", InternalName = "nerwobole"},
+                new ListItem() {Text = "Wylecz bóle", InternalName = "bole"}
+            
             };
+            
 
             ResultDictionary = new Dictionary<string, string>(){
                 {
@@ -242,8 +262,40 @@ namespace SWD
                 {
                     "lek_z_paracetamolem","Podaj lek zawierający pracetamol."
                 }
+                ,
+                {
+                    "lek_z_diosmatykiem","Podaj lek zawierający diosmatyk."
+                }
+                ,
+                {
+                    "lek_z_aspiryna","Podaj lek zawierający kwas acetylosalicylowy."
+                }
+                ,
+                {
+                    "lek_z_ibuprofen","Podaj lek zawierający ibuprofen."
+                }
+                 ,
+                {
+                    "lek_z_naproksenem","Podaj lek zawierający naproksen."
+                }
+                ,
+                {
+                    "lek_acatar","Przepisz lek Acatar."
+                }
+                  ,
+                {
+                    "lek_apselan","Przepisz lek Apselan."
+                },
+                {
+                    "lek_elofen","Przepisz lek Elofen."
+                }
+                  ,
+                {
+                    "lek_gardlox","Przepisz lek Gardlox."
+                }
+                
             };
-
+            
             TreatmentGoalsToShow = new List<ListItem>();
         }
         #endregion
